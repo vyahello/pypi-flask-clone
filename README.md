@@ -15,6 +15,7 @@
 ### Production
 - 3.7+
 - [flask](https://flask.palletsprojects.com/en/2.0.x/)
+- html & css 
 
 ### Development
 
