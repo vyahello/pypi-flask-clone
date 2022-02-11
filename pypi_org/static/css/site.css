@@ -19,13 +19,13 @@ nav > a {
 }
 
 
-h1 {
-    animation:blinkingText 0.8s infinite;
-}
-@keyframes blinkingText {
-    0%{ color: #000; }
-    49%{ color: transparent; }
-    50%{ color: transparent; }
-    75%{ color: #888; }
-    100%{ color: #000; }
-}
+/*h1 {*/
+/*    animation:blinkingText 0.8s infinite;*/
+/*}*/
+/*@keyframes blinkingText {*/
+/*    0%{ color: #000; }*/
+/*    49%{ color: transparent; }*/
+/*    50%{ color: transparent; }*/
+/*    75%{ color: #888; }*/
+/*    100%{ color: #000; }*/
+/*}*/

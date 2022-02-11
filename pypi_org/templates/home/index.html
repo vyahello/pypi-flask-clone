@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 {% extends "shared/_layout.html" %}
 {% block main_content %}
-    <h1>Python Package Index</h1>
-    {% for p in packages %}
-        <div>
-            <span class="title">
-                {{p.name|title}}
-            </span>
-            <span class="version">
-                {{p.version}}
-            </span>
-        </div>
-    {% endfor %}
+    <h1>Home</h1>
 {% endblock %}
