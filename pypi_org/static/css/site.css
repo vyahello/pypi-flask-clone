@@ -1,9 +1,17 @@
+body {
+    color: #222;
+    background: #fff;
+    margin: 0px;
+    padding: 0px;
+}
+
 .title {
         font-weight: bold;
     }
 
 .main_content {
     padding: 20px; /* alignment */
+    margin: 0px;
 }
 
 nav {
