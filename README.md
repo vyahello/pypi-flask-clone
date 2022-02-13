@@ -35,7 +35,7 @@ pip install -r requirements.txt
 python pypi_org/app.py
 ```
 
-Then please open http://0.0.0.0:8080 in your browser.
+Then please open http://0.0.0.0:5000 in your browser.
 
 **[⬆ back to top](#pypi-clone)**
 
