@@ -1,6 +1,10 @@
+import os
+
 import flask
 
 from pypi_org.views import cms, home, package
+
+from pypi_org.data.db_session import global_init
 
 app = flask.Flask(__name__)
 
@@ -8,6 +12,11 @@ app = flask.Flask(__name__)
 def main():
     register_blueprints()
     app.run(debug=True)
+
+
+def setup_db():
+    db_file = os.path.join(os.path.dirname(__file__), 'db', 'pypi.sqlite')
+    global_init(db_file)
 
 
 def register_blueprints():
