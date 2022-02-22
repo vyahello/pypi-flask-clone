@@ -2,3 +2,5 @@ flask
 sqlalchemy
 passlib
 werkzeug
+progressbar2
+python-dateutil
