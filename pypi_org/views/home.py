@@ -1,8 +1,8 @@
 import flask
 
-from infra.view_modifiers import response
-from pypi_org.services.package import get_latest_packages
-
+from pypi_org.infra.view_modifiers import response
+import pypi_org.services.package as package_service
+import pypi_org.services.user as user_service
 
 blueprint = flask.Blueprint('home', __name__, template_folder='templates')
 
@@ -10,11 +10,15 @@ blueprint = flask.Blueprint('home', __name__, template_folder='templates')
 @blueprint.route('/')
 @response(template_file='home/index.html')
 def index():
-    return {'packages': get_latest_packages()}
+    return {
+        'releases': package_service.get_latest_releases(),
+        'package_count': package_service.get_package_count(),
+        'release_count': package_service.get_release_count(),
+        'user_count': user_service.get_user_count(),
+    }
 
 
 @blueprint.route('/about')
 @response(template_file='home/about.html')
 def about():
     return {}
-    # return flask.render_template('home/about.html')
