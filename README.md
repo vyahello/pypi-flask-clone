@@ -41,6 +41,11 @@ Then please open http://0.0.0.0:5000 in your browser.
 
 ## Development notes
 
+### DB migrations 
+```bash
+alembic init alembic
+```
+
 ### CI
 
 To be able to run code analysis, please execute command below:
