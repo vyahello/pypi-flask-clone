@@ -44,6 +44,9 @@ Then please open http://0.0.0.0:5000 in your browser.
 ### DB migrations 
 ```bash
 alembic init alembic
+alembic current 
+alembic revision --autogenerate -m 'Commit Msg'
+alembic upgrade head
 ```
 
 ### CI

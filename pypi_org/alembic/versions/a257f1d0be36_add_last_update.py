@@ -1,3 +1,4 @@
+# flake8: noqa
 """Add last update
 
 Revision ID: a257f1d0be36

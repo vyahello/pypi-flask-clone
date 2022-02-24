@@ -1,4 +1,7 @@
 # noinspection PyUnresolvedReferences
+import pypi_org.data.audit  # noqa: F401
+
+# noinspection PyUnresolvedReferences
 import pypi_org.data.downloads  # noqa: F401
 
 # noinspection PyUnresolvedReferences
