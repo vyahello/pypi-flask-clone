@@ -28,3 +28,9 @@ def register_post():
 @response(template_file='account/login.html')
 def login_get():
     return {}
+
+
+@blueprint.route('/account/login', methods=['POST'])
+@response(template_file='account/login.html')
+def login_post():
+    return {}

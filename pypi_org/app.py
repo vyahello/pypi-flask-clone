@@ -2,7 +2,7 @@ import os
 
 import flask
 
-from pypi_org.views import cms, home, package
+from pypi_org.views import cms, home, package, account
 
 from pypi_org.data.db_session import global_init
 
@@ -24,6 +24,7 @@ def register_blueprints():
     app.register_blueprint(home.blueprint)
     app.register_blueprint(package.blueprint)
     app.register_blueprint(cms.blueprint)
+    app.register_blueprint(account.blueprint)
 
 
 if __name__ == '__main__':
