@@ -55,9 +55,6 @@ To be able to run code analysis, please execute command below:
 ```bash
 ./analyse-source-code.sh
 ```
-### Release notes
-
-Please check [changelog](CHANGELOG.md) file to get more details about actual versions and it's release notes.
 
 ### Meta
 
