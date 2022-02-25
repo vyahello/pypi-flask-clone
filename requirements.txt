@@ -5,3 +5,4 @@ werkzeug
 progressbar2
 python-dateutil
 alembic
+passlib
