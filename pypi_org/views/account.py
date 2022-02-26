@@ -53,7 +53,7 @@ def register_post():
             'name': name,
             'email': email,
             'password': password,
-            'error': "Some required fields are missing.",
+            'error': 'Some required fields are missing.',
             'user_id': cookie_auth.get_user_id_via_auth_cookie(flask.request),
         }
 
