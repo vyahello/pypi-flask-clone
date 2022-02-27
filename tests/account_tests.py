@@ -9,9 +9,7 @@ def test_register_validation_when_valid():
         path='/account/register', data=form_data
     ):
         vm = RegisterViewModel()
-
-    target = 'pypi_org.services.user.find_user_by_email'
-    with unittest.mock.patch(target, return_value=None):
-        vm.validate()
-
-    assert vm.error is None
+        target = 'pypi_org.services.user.find_user_by_email'
+        with unittest.mock.patch(target, return_value=None):
+            vm.validate()
+            assert vm.error is None

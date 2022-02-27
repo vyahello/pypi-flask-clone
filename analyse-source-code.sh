@@ -41,6 +41,14 @@ DOC
 }
 
 
+check-tests() {
+:<<DOC
+    Runs web app tests
+DOC
+    pretty-printer-box "web tests" && pytest
+}
+
+
 
 main() {
 :<<DOC
@@ -48,7 +56,8 @@ main() {
 DOC
     remove-pycache
     check-black && \
-    check-flake
+    check-flake && \
+    check-tests
 }
 
 main
