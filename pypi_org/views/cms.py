@@ -1,6 +1,6 @@
 import flask
 
-from infra.view_modifiers import response
+from pypi_org.infra.view_modifiers import response
 from pypi_org.services.cms import get_page
 
 

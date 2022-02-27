@@ -1,23 +1,23 @@
-from models.shared.modelbase import ViewModelBase
-from services.user import find_user_by_id
+from pypi_org.services import user
+from pypi_org.models.shared.modelbase import ViewModelBase
 
 
 class RegisterViewModel(ViewModelBase):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         self.name = self.request_dict.name
         self.email = self.request_dict.email.lower().strip()
         self.password = self.request_dict.password.strip()
         self.age = self.request_dict.age.strip()
 
-    def validate(self) -> None:
+    def validate(self):
         if not self.name or not self.name.strip():
-            self.error = 'You must specify a name'
+            self.error = 'You must specify a name.'
         elif not self.email or not self.email.strip():
-            self.error = 'You must specify an email'
-        elif not self.password or not self.password.strip():
-            self.error = 'You must specify a password'
+            self.error = 'You must specify a email.'
+        elif not self.password:
+            self.error = 'You must specify a password.'
         elif len(self.password.strip()) < 5:
-            self.error = 'Password must be at least 5 characters'
-        elif find_user_by_id(self.email):
-            self.error = 'User with that email address already exists'
+            self.error = 'The password must be at least 5 characters.'
+        elif user.find_user_by_email(self.email):
+            self.error = 'A user with that email address already exists.'

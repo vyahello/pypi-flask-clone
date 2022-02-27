@@ -1,5 +1,5 @@
-from models.shared.modelbase import ViewModelBase
-from services.user import find_user_by_id
+from pypi_org.models.shared.modelbase import ViewModelBase
+from pypi_org.services.user import find_user_by_id
 
 
 class IndexViewModel(ViewModelBase):
