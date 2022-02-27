@@ -5,7 +5,7 @@ from pypi_org.models.account.register import RegisterViewModel
 from pypi_org.infra import request_dict
 from pypi_org.infra.view_modifiers import response
 import pypi_org.infra.cookie_auth as cookie_auth
-from pypi_org.services import user as us
+from pypi_org.services import user
 
 blueprint = flask.Blueprint('account', __name__, template_folder='templates')
 
@@ -35,13 +35,13 @@ def register_post():
     if vm.error:
         return vm.to_dict()
 
-    user = us.create_user(vm.name, vm.email, vm.password)
-    if not user:
+    us = user.create_user(vm.name, vm.email, vm.password)
+    if not us:
         vm.error = 'Account cant be created'
         return vm.to_dict()
 
     resp = flask.redirect('/account')
-    cookie_auth.set_auth(resp, user.id)
+    cookie_auth.set_auth(resp, us.id)
     return resp
 
 
@@ -67,8 +67,8 @@ def login_post():
             'user_id': cookie_auth.get_user_id_via_auth_cookie(flask.request),
         }
 
-    user = us.login_user(email, password)
-    if not user:
+    us = user.login_user(email, password)
+    if not us:
         return {
             'email': email,
             'password': password,
@@ -77,7 +77,7 @@ def login_post():
         }
 
     resp = flask.redirect('/account')
-    cookie_auth.set_auth(resp, user.id)
+    cookie_auth.set_auth(resp, us.id)
 
     return resp
 
