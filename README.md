@@ -50,6 +50,13 @@ alembic revision --autogenerate -m 'Commit Msg'
 alembic upgrade head
 ```
 
+### Testing 
+
+Please run the following tool to start unit (web) tests:
+```bash
+pytest tests
+```
+
 ### CI
 
 To be able to run code analysis, please execute command below:
