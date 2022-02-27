@@ -3,6 +3,8 @@ import pytest
 import sys
 import os
 
+from pypi_org.bin import load_data
+
 container_folder = os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')
 )
@@ -24,5 +26,6 @@ def client():
         pass
 
     pypi_org.app.setup_db()
+    load_data.main()
 
     yield client
