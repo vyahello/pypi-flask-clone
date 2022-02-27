@@ -21,6 +21,7 @@
 
 - [black](https://black.readthedocs.io/en/stable/)
 - [flake8](http://flake8.pycqa.org/en/latest/)
+- pytest
 
 ## Usage
 

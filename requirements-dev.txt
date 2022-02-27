@@ -1,3 +1,7 @@
 black
 flake8
 pdbpp
+pytest
+pytest-cov
+pytest-clarity
+webtest
