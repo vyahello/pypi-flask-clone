@@ -3,7 +3,7 @@ Description=uWSGI PyPI server instance
 After=syslog.target
 
 [Service]
-ExecStart=/apps/venv/bin/uwsgi -H /apps/venv --master --processes 4 --threads 2 --http :5000 --manage-script-name --python-path /apps/pypi_repo --mount /=wsgi:app
+ExecStart=/apps/pypi_repo/venv/bin/uwsgi -H /apps/pypi_repo/venv --master --processes 4 --threads 2 --http :5000 --manage-script-name --python-path /apps/pypi_repo --mount /=wsgi:app
 RuntimeDirectory=/apps/pypi_repo
 Restart=always
 KillSignal=SIGQUIT

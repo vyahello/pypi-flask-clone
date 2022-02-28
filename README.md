@@ -8,14 +8,15 @@
 
 # PYPI clone
 
-> A clone of https://pypi.org based on **flask** python web framework.
+> A clone of https://pypi.org based on **flask** python web framework. Please check http://178.62.222.165.
 
 ## Tools
 
 ### Production
 - 3.7+
-- [flask](https://flask.palletsprojects.com/en/2.0.x/)
+- [flask](https://flask.palletsprojects.com/en/2.0.x/) 
 - html & css 
+- uWSGI & nginx
 
 ### Development
 
@@ -66,12 +67,39 @@ To be able to run code analysis, please execute command below:
 
 ### Deployment
 
-The app is deployed on linux machine, please follow next instructions to deploy your app:
+The app is deployed on the linux machine, please follow the next instructions to deploy your app:
 
 ```bash
+# call setup only for the first run
 ./server/setup.sh
 service nginx start
 systemctl start pypi
+```
+
+Manual server verification:
+```bash
+# start nginx
+service nginx start
+# run wsgi
+/apps/pypi_repo/venv/bin/uwsgi -H /apps/pypi_repo/venv --master --processes 4 --threads 2 --http :5000 --manage-script-name --python-path /apps/pypi_repo --mount /=wsgi:app
+# check connection 
+http localhost:5000
+```
+
+Manual service setup:
+```bash
+# setup wsgi
+cp /apps/pypi_repo/server/pypi.service /etc/systemd/system/pypi.service
+systemctl start pypi
+systemctl status pypi
+systemctl enable pypi  # run service during startup
+reboot
+
+# setup nginx
+rm /etc/nginx/sites-enabled/default
+cp /apps/pypi_repo/server/pypi.nginx /etc/nginx/sites-enabled/pypi.nginx
+update-rc.d nginx enable
+service nginx restart
 ```
 
 ### Meta
