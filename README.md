@@ -64,6 +64,16 @@ To be able to run code analysis, please execute command below:
 ./analyse-source-code.sh
 ```
 
+### Deployment
+
+The app is deployed on linux machine, please follow next instructions to deploy your app:
+
+```bash
+./server/setup.sh
+service nginx start
+systemctl start pypi
+```
+
 ### Meta
 
 Author – _Vladimir Yahello_. Please check [authors](AUTHORS.md) file for more details.
