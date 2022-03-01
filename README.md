@@ -52,6 +52,13 @@ alembic revision --autogenerate -m 'Commit Msg'
 alembic upgrade head
 ```
 
+### Database switch 
+
+There are two databases: `sqlalchemy` and `mongodb`, by default `sqlalchemy` is used. Please set `NO_SQL` env variable to use `mongodb`:
+```bash
+export NO_SQL=true
+```
+
 ### Mongodb setup 
 
 ```bash

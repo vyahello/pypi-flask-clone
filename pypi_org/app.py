@@ -21,17 +21,17 @@ def configure():
     register_blueprints()
     print('Registered blueprints')
 
-    setup_db(sql=False)
+    setup_db()
     print('DB setup completed.')
     print('', flush=True)
 
 
-def setup_db(sql: bool = True):
-    if sql:
+def setup_db():
+    if os.getenv('NO_SQL'):
+        mongo_setup.global_init()
+    else:
         db_file = os.path.join(os.path.dirname(__file__), 'db', 'pypi.sqlite')
         global_init(db_file)
-    else:
-        mongo_setup.global_init()
 
 
 def register_blueprints():
