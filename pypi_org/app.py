@@ -2,6 +2,7 @@ import os
 
 import flask
 
+from pypi_org.nosql import mongo_setup
 from pypi_org.views import cms, home, package, account, seo
 
 from pypi_org.data.db_session import global_init
@@ -20,14 +21,17 @@ def configure():
     register_blueprints()
     print('Registered blueprints')
 
-    setup_db()
+    setup_db(sql=False)
     print('DB setup completed.')
     print('', flush=True)
 
 
-def setup_db():
-    db_file = os.path.join(os.path.dirname(__file__), 'db', 'pypi.sqlite')
-    global_init(db_file)
+def setup_db(sql: bool = True):
+    if sql:
+        db_file = os.path.join(os.path.dirname(__file__), 'db', 'pypi.sqlite')
+        global_init(db_file)
+    else:
+        mongo_setup.global_init()
 
 
 def register_blueprints():
