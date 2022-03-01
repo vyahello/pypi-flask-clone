@@ -1,7 +1,9 @@
 import hashlib
+import os
 from datetime import timedelta
-from typing import Optional
+from typing import Optional, Union
 
+import bson
 from flask import Request
 from flask import Response
 
@@ -34,7 +36,9 @@ def __add_cookie_callback(_, response: Response, name: str, value: str):
     )
 
 
-def get_user_id_via_auth_cookie(request: Request) -> Optional[int]:
+def get_user_id_via_auth_cookie(
+    request: Request,
+) -> Optional[Union[int, bson.ObjectId]]:
     if auth_cookie_name not in request.cookies:
         return None
 
@@ -50,7 +54,13 @@ def get_user_id_via_auth_cookie(request: Request) -> Optional[int]:
         print("Warning: Hash mismatch, invalid cookie value")
         return None
 
-    return try_int(user_id)
+    if not os.getenv('NO_SQL'):
+        return try_int(user_id)
+
+    try:
+        return bson.ObjectId(user_id)
+    except Exception:
+        pass
 
 
 def logout(response: Response):
