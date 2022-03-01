@@ -1,8 +1,8 @@
 import flask
 
 from pypi_org.infra.view_modifiers import response
-import pypi_org.services.package as package_service
-import pypi_org.services.user as user_service
+from pypi_org.models.home.index import IndexViewModel
+from pypi_org.models.shared.modelbase import ViewModelBase
 
 blueprint = flask.Blueprint('home', __name__, template_folder='templates')
 
@@ -10,15 +10,12 @@ blueprint = flask.Blueprint('home', __name__, template_folder='templates')
 @blueprint.route('/')
 @response(template_file='home/index.html')
 def index():
-    return {
-        'releases': package_service.get_latest_releases(),
-        'package_count': package_service.get_package_count(),
-        'release_count': package_service.get_release_count(),
-        'user_count': user_service.get_user_count(),
-    }
+    vm = IndexViewModel()
+    return vm.to_dict()
 
 
 @blueprint.route('/about')
 @response(template_file='home/about.html')
 def about():
-    return {}
+    vm = ViewModelBase()
+    return vm.to_dict()
