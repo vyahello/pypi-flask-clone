@@ -52,6 +52,13 @@ alembic revision --autogenerate -m 'Commit Msg'
 alembic upgrade head
 ```
 
+### Mongodb setup 
+
+```bash
+brew install mongodb-community@5.0
+brew services start mongodb/brew/mongodb-community
+```
+
 ### Testing 
 
 Please run the following tool to start unit (web) tests:
